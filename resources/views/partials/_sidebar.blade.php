@@ -1,4 +1,7 @@
 
+@foreach ($user as $item)
+        
+@endforeach
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
     <li class="nav-item nav-profile">
@@ -8,7 +11,7 @@
             <img src="{{ asset('custom/images/faces/face1.jpg') }}" alt="profile image">
           </div>
           <div class="text-wrapper">
-            <p class="profile-name">Richard V.Welsh</p>
+            <p class="profile-name">{{ $item->First_Name }} {{ $item->Last_Name }}</p>
             <div>
               <small class="designation text-muted">Physician</small>
               <span class="status-indicator online"></span>
@@ -49,6 +52,8 @@
         <span class="menu-title">All Patitents</span>
       </a>
     </li>
+    {{-- {{ dd($user)}} --}}
+    
     <li class="nav-item">
       <a class="nav-link" href="{{ url('physician-appointment') }}">
         <i class="menu-icon mdi mdi-clipboard-text"></i>
