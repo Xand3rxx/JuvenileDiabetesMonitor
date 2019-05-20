@@ -16,18 +16,18 @@
     
     <ul class="navbar-nav navbar-nav-right">
       <li class="nav-item dropdown">
-        <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+        {{-- <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
           <i class="mdi mdi-file-document-box"></i>
           <span class="count">7</span>
-        </a>
+        </a> --}}
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-          <div class="dropdown-item">
+          {{-- <div class="dropdown-item">
             <p class="mb-0 font-weight-normal float-left">You have 7 unread mails
             </p>
             <span class="badge badge-info badge-pill float-right">View all</span>
-          </div>
+          </div> --}}
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item">
+          {{-- <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
               <img src="{{ asset('custom/images/faces/face4.jpg') }}" alt="image" class="profile-pic">
             </div>
@@ -39,7 +39,7 @@
                 The meeting is cancelled
               </p>
             </div>
-          </a>
+          </a> --}}
           <div class="dropdown-divider"></div>
           <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
@@ -71,10 +71,10 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+        {{-- <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
           <i class="mdi mdi-bell"></i>
           <span class="count">4</span>
-        </a>
+        </a> --}}
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
           <a class="dropdown-item">
             <p class="mb-0 font-weight-normal float-left">You have 4 new notifications

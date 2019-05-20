@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use App\PhysicianInformation;
 use App\PatientInformation;
 use App\PhysicianAppointment;
+use App\GlucoseValues;
+use App\InsulinValues;
+use App\Messages;
 use DB;
 use Auth;
 use App\User;
@@ -222,16 +225,47 @@ class PhysicianController extends Controller
             Controller method to return all information about a Patient
         */
         $patientProfile = PatientInformation::where('Medical_Record_No', $id)->get();
-        // return response()->json($patientProfile);
-        return view('physician.viewPatientProfile', compact('patientProfile'));
+
+        //Get glucose readings for patient
+        $glucoseValues = GlucoseValues::where('Medical_Record_No', $id)->get();
+        $insulinValues = InsulinValues::where('Medical_Record_No', $id)->get();
+
+        $gluMeasurement = array();
+        $gluDate = array();
+        $gluTime = array();
+        $dateTime = array();
+
+        foreach($glucoseValues as $item){
+            $gluMeasurement[] = $item->Glucose_Measurement;
+            $gluDate[] = $item->BG_Date;
+            $gluTime[] = $item->BG_Time;
+            
+        }
+        foreach($insulinValues as $item){
+            $gluMeasurement1[] = $item->Insulin_injection_value;
+            $gluDate1[] = $item->Insulin_Date;
+            $gluTime1[] = $item->Insulin_Time;
+            
+        }
+        // echo json_decode($gluTime1).' '.json_encode($gluDate1);
+        // $dateTime = $gluDate.' '.$gluTime;
+        // return response()->json($gluTime);
+        return view('physician.viewPatientProfile', compact('patientProfile', 'gluMeasurement', 'gluDate', 'gluTime', 'gluMeasurement1', 'gluDate1', 'gluTime1'));
     }
 
     public function viewPatientMessages($id){
         /*
             Controller method to return all information about a Patient
         */
+        $collection = PhysicianInformation::where('id', Auth::user()->id)->get();
+        foreach($collection as $item){
+            $Physician_ID = $item->Physician_ID;
+        }
         $patientProfile = PatientInformation::where('Medical_Record_No', $id)->get();
+
+        $patientMessage = Messages::where('Medical_Record_No', $id)
+        ->where('Physician_ID', $Physician_ID)->get();
         // return response()->json($patientProfile);
-        return view('physician.viewPatientMessages', compact('patientProfile'));
+        return view('physician.viewPatientMessages', compact('patientMessage', 'patientProfile'));
     }
 }

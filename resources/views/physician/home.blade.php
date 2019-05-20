@@ -118,7 +118,31 @@
                         <td><i class="mdi mdi-eye"></i></td>
                         {{-- <td><a href="{{ route('patientCarePod', $item->Medical_Record_No) }}"><i class="mdi mdi-eye"></a></td> --}}
                         <td id="remove_risk"><i class="mdi mdi-close"></i></td> 
-                      </tr>      
+                      </tr>    
+                      <tr class="text-danger">
+                          <td class="font-weight-medium">2</td>
+                          <td>Ryan Reynolds </td>
+                          <td>2</td>
+                          <td><i class="mdi mdi-eye"></i></td>
+                          {{-- <td><a href="{{ route('patientCarePod', $item->Medical_Record_No) }}"><i class="mdi mdi-eye"></a></td> --}}
+                          <td id="remove_risk"><i class="mdi mdi-close"></i></td> 
+                        </tr>  
+                        <tr class="text-danger">
+                            <td class="font-weight-medium">3</td>
+                            <td>Gene Hackman </td>
+                            <td>5</td>
+                            <td><i class="mdi mdi-eye"></i></td>
+                            {{-- <td><a href="{{ route('patientCarePod', $item->Medical_Record_No) }}"><i class="mdi mdi-eye"></a></td> --}}
+                            <td id="remove_risk"><i class="mdi mdi-close"></i></td> 
+                          </tr> 
+                          <tr class="text-danger">
+                              <td class="font-weight-medium">4</td>
+                              <td>Brad Traversy</td>
+                              <td>3</td>
+                              <td><i class="mdi mdi-eye"></i></td>
+                              {{-- <td><a href="{{ route('patientCarePod', $item->Medical_Record_No) }}"><i class="mdi mdi-eye"></a></td> --}}
+                              <td id="remove_risk"><i class="mdi mdi-close"></i></td> 
+                            </tr>      
                 </tbody>
               </table>
             </div>
