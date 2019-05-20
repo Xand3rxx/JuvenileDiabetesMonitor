@@ -7,6 +7,7 @@
         <title>Juvenile Diabetes Monitor- @yield('title') </title>
         <!-- plugins:css -->
         <link rel="stylesheet" href="{{ asset('custom/vendors/iconfonts/mdi/css/materialdesignicons.min.css') }}">
+        <script src="{{ asset('custom/js/jquery.min.js') }}"></script>
         <link rel="stylesheet" href="{{ asset('custom/vendors/css/vendor.bundle.base.css') }}">
         <link rel="stylesheet" href="{{ asset('custom/vendors/css/vendor.bundle.addons.css') }}">
         <!-- endinject -->
@@ -14,6 +15,7 @@
         <!-- End plugin css for this page -->
         <!-- inject:css -->
         <link rel="stylesheet" href="{{ asset('custom/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('custom/css/sweetalert2.min.css') }}">
         <!-- endinject -->
         <link rel="shortcut icon" href="{{ asset('custom/images/favicon.png') }}" />
     </head>
@@ -51,6 +53,8 @@
         <!-- endinject -->
         <!-- Custom js for this page-->
         <script src="{{ asset('custom/js/dashboard.js') }}"></script>
+        <script src="{{ asset('custom/js/sweetalert2.min.js') }}"></script>
+        
         <!-- End custom js for this page-->
     </body>
 </html>

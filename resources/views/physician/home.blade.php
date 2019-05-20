@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Dashboard')
+@section('title', 'Physician Dashboard')
 @section('content')
     {{-- <div class="row purchace-popup">
       <div class="col-12">
@@ -116,7 +116,8 @@
                         <td>Herman Beck </td>
                         <td>4</td>
                         <td><i class="mdi mdi-eye"></i></td>
-                        <td><i class="mdi mdi-close"></i></td> 
+                        {{-- <td><a href="{{ route('patientCarePod', $item->Medical_Record_No) }}"><i class="mdi mdi-eye"></a></td> --}}
+                        <td id="remove_risk"><i class="mdi mdi-close"></i></td> 
                       </tr>      
                 </tbody>
               </table>
@@ -162,6 +163,10 @@
         </div>
       </div>
 
-    
+    <script>
+      $(document).on('click', '#remove_risk', function(){
+          $(this).closest("tr").remove();
+      });
+    </script>
   <!-- content-wrapper ends -->
 @endsection

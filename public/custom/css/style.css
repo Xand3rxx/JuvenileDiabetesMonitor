@@ -16301,4 +16301,8 @@ ul {
   .error-page .error-page-divider {
     border-left: 3px solid rgba(255, 255, 255, 0.2); } }
 
+.min-height-300 {
+  min-height: 250px;
+}
+
 /*# sourceMappingURL=maps/style.css.map */

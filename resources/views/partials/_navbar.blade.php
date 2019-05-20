@@ -1,9 +1,11 @@
 
+@foreach ($user as $item)     
+@endforeach 
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
     <a class="navbar-brand brand-logo" href="index.html">
       {{-- <img src="{{ asset('custom/images/logo.svg') }}" alt="logo" /> --}}
-      <p style="color: #5983e8; font-size: 19px;"><strong>Juvenile Diabetes Monitor</strong></p>
+      <p style="color: #5983e8; font-size: 18px;"><strong>Juvenile Diabetes Monitor</strong></p>
     </a>
     <a class="navbar-brand brand-logo-mini" href="index.html">
       {{-- <img src="{{ asset('custom/images/logo-mini.svg') }}" alt="logo" /> --}}
@@ -125,8 +127,13 @@
       </li>
       <li class="nav-item dropdown d-none d-xl-inline-block">
         <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-        {{-- <span class="profile-text">Hello, {{ $user->First_Name }} {{ $user->Last_Name }}</span> --}}
-          <img class="img-xs rounded-circle" src="{{ asset('custom/images/faces/face1.jpg') }}" alt="Profile image">
+        <span class="profile-text">Hello, {{ $item->First_Name }} {{ $item->Last_Name }}</span>
+              @if ($item->Avatar == '' || $item->Avatar == 'user_avatar.jpg')
+                <img class="img-xs rounded-circle" src="{{ asset('custom/images/user_avatar.jpg') }}" alt="image">                      
+              @else
+                <img class="img-xs rounded-circle" src="{{ asset('uploads/'.$item->Avatar) }}" alt="image">
+              @endif
+          {{-- <img class="img-xs rounded-circle" src="{{ asset('custom/images/faces/face1.jpg') }}" alt="Profile image"> --}}
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
           {{-- <a class="dropdown-item p-0">

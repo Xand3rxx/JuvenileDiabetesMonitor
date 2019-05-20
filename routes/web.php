@@ -23,7 +23,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 /* 
     All Routes related to Physiciian
-    Route List: Home, Appointments, 
+    Route List: Home, Appointments, Settings
 
 */
 
@@ -32,6 +32,9 @@ Route::get('/patient', 'PatientController@index')->name('patientHome');
 Route::get('/all-patients', 'PhysicianController@allPatients');
 Route::get('/physician-appointment', 'PhysicianController@allAppointments');
 Route::get('/physician-settings', 'PhysicianController@settings');
+Route::get('/patient-care-pod/{id}', 'PhysicianController@viewPatientProfile')->name('patientCarePod');
+Route::get('/patient-messages/{id}', 'PhysicianController@viewPatientMessages')->name('patientMessages');
+
 
 
 /* 

@@ -28,7 +28,7 @@
                   @endif                  
                 </td>
             <td>{{ $item->First_Name }} {{ $item->Middle_Name }} {{ $item->Last_Name }}</td>
-                <td><a href=""><i class="mdi mdi-eye"></a></td>
+                <td><a href="{{ route('patientCarePod', $item->Medical_Record_No) }}"><i class="mdi mdi-eye"></a></td>
               </tr>
             @endforeach
             

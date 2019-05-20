@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Juvenile Diabetes Monitor: Login</title>
   <!-- plugins:css -->
+  <script src="{{ asset('custom/js/jquery.min.js') }}"></script>
   <link rel="stylesheet" href="{{ asset('custom/vendors/iconfonts/mdi/css/materialdesignicons.min.css') }}">
   <link rel="stylesheet" href="{{ asset('custom/vendors/css/vendor.bundle.base.css') }}">
   <link rel="stylesheet" href="{{ asset('custom/vendors/css/vendor.bundle.addons.css') }}">

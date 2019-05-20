@@ -216,4 +216,22 @@ class PhysicianController extends Controller
     {
         //
     }
+
+    public function viewPatientProfile($id){
+        /*
+            Controller method to return all information about a Patient
+        */
+        $patientProfile = PatientInformation::where('Medical_Record_No', $id)->get();
+        // return response()->json($patientProfile);
+        return view('physician.viewPatientProfile', compact('patientProfile'));
+    }
+
+    public function viewPatientMessages($id){
+        /*
+            Controller method to return all information about a Patient
+        */
+        $patientProfile = PatientInformation::where('Medical_Record_No', $id)->get();
+        // return response()->json($patientProfile);
+        return view('physician.viewPatientMessages', compact('patientProfile'));
+    }
 }
