@@ -231,25 +231,31 @@ class PhysicianController extends Controller
         $insulinValues = InsulinValues::where('Medical_Record_No', $id)->get();
 
         $gluMeasurement = array();
+        $gluMeasurement1 = array();
         $gluDate = array();
+        $gluDate1 = array();
         $gluTime = array();
+        $gluTime1 = array();
         $dateTime = array();
+        $dateTime1 = array();
 
         foreach($glucoseValues as $item){
             $gluMeasurement[] = $item->Glucose_Measurement;
             $gluDate[] = $item->BG_Date;
-            $gluTime[] = $item->BG_Time;
+            // $gluTime[] = $item->BG_Time;
+            $gluTime[] = $item->BG_Date.' '.$item->BG_Time;
             
         }
         foreach($insulinValues as $item){
             $gluMeasurement1[] = $item->Insulin_injection_value;
             $gluDate1[] = $item->Insulin_Date;
-            $gluTime1[] = $item->Insulin_Time;
+            $gluTime1[] = $item->Insulin_Date.' '.$item->Insulin_Time;
             
         }
         // echo json_decode($gluTime1).' '.json_encode($gluDate1);
         // $dateTime = $gluDate.' '.$gluTime;
         // return response()->json($gluTime);
+
         return view('physician.viewPatientProfile', compact('patientProfile', 'gluMeasurement', 'gluDate', 'gluTime', 'gluMeasurement1', 'gluDate1', 'gluTime1'));
     }
 
@@ -264,7 +270,7 @@ class PhysicianController extends Controller
         $patientProfile = PatientInformation::where('Medical_Record_No', $id)->get();
 
         $patientMessage = Messages::where('Medical_Record_No', $id)
-        ->where('Physician_ID', $Physician_ID)->get();
+        ->where('Physician_ID', $Physician_ID)->latest('SentDate')->get();
         // return response()->json($patientProfile);
         return view('physician.viewPatientMessages', compact('patientMessage', 'patientProfile'));
     }

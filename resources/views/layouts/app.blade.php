@@ -54,7 +54,48 @@
         <!-- Custom js for this page-->
         <script src="{{ asset('custom/js/dashboard.js') }}"></script>
         <script src="{{ asset('custom/js/sweetalert2.min.js') }}"></script>
-        
+        <script src="{{ asset('custom/js/dialog-polyfill.js') }}"></script>
+        <script>
+            $(document).ready(function (){
+                //Initialize bootstrap tooltip plugin
+                $('[data-toggle="tooltip"]').tooltip();
+
+
+            });
+        </script>
+        <script>
+            (function() {
+                'use strict';
+                $(document).on('click', '.show-modal-example', function(){
+                    // $(this).closest('div.item-list').find('.pulse-show');
+                    // let msgTitle = $(this).closest('p').find('.msgTitle').text();
+                    let msgTitle = $('.msgTitle').html();
+
+                    console.log(msgTitle);
+                    showClickHandler();
+                });
+
+                $(document).on('click', '.close-modal-example', function(){
+                    closeClickHandler();
+                });
+
+                var dialog = document.querySelector('#modal-example');
+                var closeButton = dialog.querySelector('button');
+                var showButton = document.querySelector('.show-modal-example');
+                if (! dialog.showModal) {
+                    dialogPolyfill.registerDialog(dialog);
+                }
+                var closeClickHandler = function(event) {
+                    dialog.close();
+                };
+                var showClickHandler = function(event) {
+                    dialog.showModal();
+
+                };
+                // showButton.addEventListener('click', showClickHandler);
+                // closeButton.addEventListener('click', closeClickHandler);
+            }());
+        </script>
         <!-- End custom js for this page-->
     </body>
 </html>

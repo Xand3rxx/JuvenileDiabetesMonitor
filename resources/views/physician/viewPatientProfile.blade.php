@@ -162,13 +162,14 @@ var myChart = new Chart(ctx, {
 <script>
   var ctx = document.getElementById('areaChart');
   var measure = <?php echo json_encode($gluMeasurement); ?>;
-  // var time = <?php echo json_encode($gluTime); ?>;
-  var final = measure;
+  var time = <?php echo json_encode($gluTime); ?>;
+  var date = <?php echo json_encode($gluDate); ?>;
+  
   var myChart = new Chart(ctx, {
    
       type: 'line',
       data: {
-          labels: <?php echo json_encode($gluDate); ?>,
+          labels: time,
           datasets: [{
               label: 'Glucose Measurement',
               data: measure,
@@ -189,15 +190,30 @@ var myChart = new Chart(ctx, {
                   'rgba(255, 159, 64, 1)'
               ],
               borderWidth: 1,
-              fill: false
+              fill: true,
+              // fillColor: 'dodgerblue'
           }]
         
       },
       options: {
           scales: {
-              yAxes: [{
+              xAxes: [{
+                type: 'time',
+                // time: {
+                //   parser: timeFormat,
+                //   // round: 'day'
+                //   tooltipFormat: 'll HH:mm'
+                // },
                   ticks: {
-                      beginAtZero: true
+                      beginAtZero: true,
+                      major: {
+                        fontStyle: 'bold',
+                        fontColor: '#FF0000'
+                      }
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Date'
                   }
               }],
               yAxes: [{
@@ -214,17 +230,17 @@ var myChart = new Chart(ctx, {
 
   <script>
   var ctx = document.getElementById('myChart');
-  var measure = <?php echo json_encode($gluMeasurement1); ?>;
-  // var time = <?php echo json_encode($gluTime1); ?>;
-  var final = measure;
+  var insulin = <?php echo json_encode($gluMeasurement1); ?>;
+  var time = <?php echo json_encode($gluTime1); ?>;
+  var date = <?php echo json_encode($gluDate1)?>;
   var myChart = new Chart(ctx, {
    
       type: 'line',
       data: {
-          labels: <?php echo json_encode($gluDate1)?>,
+          labels: time,
           datasets: [{
               label: 'Insulin Measurement',
-              data: final,
+              data: insulin,
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
@@ -248,9 +264,18 @@ var myChart = new Chart(ctx, {
       },
       options: {
           scales: {
-              yAxes: [{
+            xAxes: [{
+                type: 'time',
                   ticks: {
-                      beginAtZero: true
+                      beginAtZero: true,
+                      major: {
+                        fontStyle: 'bold',
+                        fontColor: '#FF0000'
+                      }
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Date'
                   }
               }],
               yAxes: [{
