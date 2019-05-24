@@ -69,7 +69,7 @@
                 $(document).on('click', '.show-modal-example', function(){
                     // $(this).closest('div.item-list').find('.pulse-show');
                     // let msgTitle = $(this).closest('p').find('.msgTitle').text();
-                    let msgTitle = $('.msgTitle').html();
+                    let msgTitle = $('div.msgTitle').data('title');
 
                     console.log(msgTitle);
                     showClickHandler();
