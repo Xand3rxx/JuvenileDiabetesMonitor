@@ -27,7 +27,7 @@
                     <img src="{{ asset('uploads/'.$item->Avatar) }}" alt="image">
                   @endif                  
                 </td>
-            <td>{{ $item->First_Name }} {{ $item->Middle_Name }} {{ $item->Last_Name }}</td>
+            <td><a href="{{ route('patientCarePod', $item->Medical_Record_No) }}">{{ $item->First_Name }} {{ $item->Middle_Name }} {{ $item->Last_Name }}</a></td>
                 <td><a href="{{ route('patientCarePod', $item->Medical_Record_No) }}"><i class="mdi mdi-eye"></a></td>
               </tr>
             @endforeach

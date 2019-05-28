@@ -26,7 +26,19 @@
                 <p class="text-dark"><span class="text-warning">Email:</span> {{ $item->Guardian1_Email}}</p>
                 <p class="text-dark"><span class="text-warning">Mobile No:</span> {{ $item->Guardian1_mobile_No}}</p>
                 <p class="text-white bg-dark pl-1">Risk Value</p>
-                <p class="text-danger">4</p>
+                <p class="text-danger">
+                  @if ($riskValue < 130)
+                      1
+                  @elseif($riskValue > 130 && $riskValue < 160)
+                      2
+                  @elseif($riskValue > 160 && $riskValue < 190)
+                      3
+                  @elseif($riskValue > 190 && $riskValue < 220)
+                      4
+                  @else
+                      5
+                  @endif
+                </p>
               </div>
               <div class="col-md-6">
                 <div class="col-md-3">
@@ -42,7 +54,7 @@
                   <div class="template-demo">
                     <a class="btn btn-outline-success" href="{{ route('patientMessages', $item->Medical_Record_No) }}">Patient Messages</a>
                     <button type="button" class="btn btn-outline-primary">Schedule Appointment</button>
-                    <button type="button" class="btn btn-outline-info">Order Refill</button>
+                    <button type="button" class="btn btn-outline-info">Refill History</button>
                     <button type="button" class="btn btn-outline-warning refill">Change Medication</button>
                   </div>
               </div>            
@@ -198,7 +210,7 @@ var myChart = new Chart(ctx, {
       options: {
           scales: {
               xAxes: [{
-                type: 'time',
+                // type: 'time',
                 // time: {
                 //   parser: timeFormat,
                 //   // round: 'day'
@@ -213,7 +225,7 @@ var myChart = new Chart(ctx, {
                   },
                   scaleLabel: {
                     display: true,
-                    labelString: 'Date'
+                    // labelString: 'Date'
                   }
               }],
               yAxes: [{

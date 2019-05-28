@@ -229,7 +229,7 @@ class PhysicianController extends Controller
         //Get glucose readings for patient
         $glucoseValues = GlucoseValues::where('Medical_Record_No', $id)->get();
         $insulinValues = InsulinValues::where('Medical_Record_No', $id)->get();
-
+        $glucoseValuesCount = $glucoseValues->count();
         $gluMeasurement = array();
         $gluMeasurement1 = array();
         $gluDate = array();
@@ -238,13 +238,15 @@ class PhysicianController extends Controller
         $gluTime1 = array();
         $dateTime = array();
         $dateTime1 = array();
+        $riskValue = 0;
 
         foreach($glucoseValues as $item){
             $gluMeasurement[] = $item->Glucose_Measurement;
             $gluDate[] = $item->BG_Date;
             // $gluTime[] = $item->BG_Time;
-            $gluTime[] = $item->BG_Date.' '.$item->BG_Time;
-            
+            $gluTime[] = $item->BG_Date.' '.$item->BG_Time.' '.$item->Patient_Stated_Reason;
+            // $gluTime[] = $item->BG_Date.' '.$item->BG_Time;
+            $riskValue +=  $item->Glucose_Measurement;
         }
         foreach($insulinValues as $item){
             $gluMeasurement1[] = $item->Insulin_injection_value;
@@ -252,11 +254,18 @@ class PhysicianController extends Controller
             $gluTime1[] = $item->Insulin_Date.' '.$item->Insulin_Time;
             
         }
+        if (!empty($riskValue))
+        {
+            $riskValue = number_format($riskValue/$glucoseValuesCount);
+        }else{
+            $riskValue = 100;
+        }
+        
         // echo json_decode($gluTime1).' '.json_encode($gluDate1);
         // $dateTime = $gluDate.' '.$gluTime;
-        // return response()->json($gluTime);
+        // return response()->json($riskValue);
 
-        return view('physician.viewPatientProfile', compact('patientProfile', 'gluMeasurement', 'gluDate', 'gluTime', 'gluMeasurement1', 'gluDate1', 'gluTime1'));
+        return view('physician.viewPatientProfile', compact('patientProfile', 'gluMeasurement', 'gluDate', 'gluTime', 'gluMeasurement1', 'gluDate1', 'gluTime1', 'riskValue'));
     }
 
     public function viewPatientMessages($id){

@@ -54,22 +54,11 @@
                   
                 </div>
                 <div class="ticket-actions col-md-2">
-                  <div class="btn-group dropdown">
-                    <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Manage
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item show-modal-example" href="#" id="">
-                        <i class="fa fa-reply fa-fw"></i>Quick reply</a>
-                      {{-- <a class="dropdown-item" href="#">
-                        <i class="fa fa-history fa-fw"></i>Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">
-                        <i class="fa fa-check text-success fa-fw"></i>Resolve Issue</a>
-                      <a class="dropdown-item" href="#">
-                        <i class="fa fa-times text-danger fa-fw"></i>Close Issue</a> --}}
-                    </div>
-                  </div>
+                  {{-- <div class="btn-group"> --}}
+                    <button type="button" class="btn btn-success btn-sm show-modal-example" >
+                        <i class="fa fa-reply fa-fw"></i>Reply
+                    </button>                   
+                  {{-- </div> --}}
                 </div>
               </div>
 
