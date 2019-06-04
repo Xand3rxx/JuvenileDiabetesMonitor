@@ -59,25 +59,40 @@
                 </p>
               </div>
               <div class="col-md-6">
-                <div class="col-md-3">
-                  <div class="profile-image user_wrapper">
+                <style>
+                  .center{
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    max-width: 50%;
+                  }
+                </style>
+                <div class="col-md-3 center">
+                  <div class="profile-image user_wrapper">           
                       @if ($item->Avatar == '' || $item->Avatar == 'user_avatar.jpg')
-                      <img src="{{ asset('custom/images/user_avatar.jpg') }}" alt="image">                      
+                      <img src="{{ asset('custom/images/user_avatar.jpg') }}" alt="image">     
                       @else
-                        <img style="height: 255px; " src="{{ asset('uploads/'.$item->Avatar) }}" alt="image">
+                        <img style="height: 200px; " src="{{ asset('uploads/'.$item->Avatar) }}" alt="image">
                       @endif
                   </div>
                 </div>
-              <div class="col-md-3">
-                  <div class="template-demo">
-                    <a class="btn btn-outline-success" href="{{ route('patientMessages', $item->Medical_Record_No) }}">Patient Messages</a>
-                    <button type="button" class="btn btn-outline-primary schedule">Schedule Appointment</button>
-                    <button type="button" class="btn btn-outline-info">Refill History</button>
-                    <button type="button" class="btn btn-outline-warning refill">Change Medication</button>
-                  </div>
-              </div>            
+                <p class="text-white bg-dark pl-1">Estimated HBA1C</p>
+                <p class="text-dark font-weight-bold"> 8</p>
+                <p class="text-white bg-dark pl-1">EMR Generated HBA1C</p>
+                <p class="text-dark font-weight-bold">9</p>
+                <p class="text-warning">There is a significant difference between HBA1C and the EMR estimated HBA1C</p>
+              
+                     
             </div>  
             </div>
+            <div class="col-md-12 text-center">
+                <div class="template-demo">
+                  <a class="btn btn-outline-success" href="{{ route('patientMessages', $item->Medical_Record_No) }}">Patient Messages</a>
+                  <button type="button" class="btn btn-outline-primary schedule">Schedule Appointment</button>
+                  <button type="button" class="btn btn-outline-info">Refill History</button>
+                  <button type="button" class="btn btn-outline-warning refill">View Medication</button>
+                </div>
+            </div>     
           </div>
         </div>
       </div>
@@ -108,7 +123,8 @@
     <div class="mdl-dialog__content">
         <div class="card">
             <div class="card-body riskValue">
-              <h2 class="text-danger font-weight-bold text-center">Risk Value Alert</h2>
+              <h3 class="text-danger font-weight-bold text-center">Risk Value Alert</h3>
+              <hr>
               <h5 class="card-description">{{ $item->First_Name}} {{ $item->Middle_Name}} {{ $item->Last_Name}} risk value is 
                   @if ($riskValue < 130)
                       1
@@ -133,7 +149,8 @@
 
           {{--Appointment View--}}
           <div class="card-body d-none appointMent">
-              <h2 class="text-primary font-weight-bold text-center">Appointment Scheduler</h2>
+              <h3 class="text-primary font-weight-bold text-center">Appointment Scheduler</h3>
+              <hr>
           <form class="forms-sample" action="{{ route('PhysicianAppointment') }}" method="POST">
                   {{ csrf_field() }}
               <input class="d-none" name="PatientID" value="{{ $item->Medical_Record_No }}">
@@ -157,7 +174,7 @@
                 <textarea class="form-control" name="Appointment_Message" id="Appointment_Message" rows="3"></textarea>
               </div>
               <button type="submit" class="btn btn-success mr-2">Submit</button>
-              <button class="btn btn-light close-modal-example">Cancel</button>
+              <a class="btn btn-light close-modal-example cancel">Cancel</a>
             </form>
           </div>
     </div>
@@ -168,10 +185,16 @@
 
   $('.yes').click(function(){
     $('.riskValue, .appointMent').toggleClass('d-none');
+    // if(!($('.riskValue').hasClass('d-none'))){
+    //   $('.appointMent').removeClass('d-none');
+    //   $('.riskValue').addClass('d-none');
+    // }
+
   });
 
   // jquery
   $(function () {
+
     if (/Mobi/.test(navigator.userAgent)) {
       // if mobile device, use native pickers
       $(".date input").attr("type", "date");

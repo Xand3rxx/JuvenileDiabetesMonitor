@@ -311,23 +311,31 @@ class PhysicianController extends Controller
         /*
             Controller method to enable a Physician schedule an appointment wiht a Patient
         */
-
-        //Get Physician ID
-        $Physician_ID = PhysicianInformation::select('Physician_ID')->where('id', Auth::user()->id)->first();
-
-        //Create record for new Physician appointment on tbl_physician_appointment table
-        $new_appointment = PhysicianAppointment::create([
-            'Physician_ID'                 =>   $Physician_ID->Physician_ID,
-            'Medical_Record_No'            =>   $request->get('PatientID'),
-            'Appointment_Date'             =>   $request->get('datepicker'),
-            'Appointment_Time'             =>   $request->get('timepicker'),
-            'Appointment_Message'          =>   $request->get('Appointment_Message'),
+        $valid_info = $request->validate([
+            'datepicker'         =>  'required',
+            'timepicker'         =>  'required',
         ]);
+        if($valid_info){
+            //Get Physician ID
+            $Physician_ID = PhysicianInformation::select('Physician_ID')->where('id', Auth::user()->id)->first();
 
-        if($new_appointment){
-            return back()->with('success', 'Appointment has been created');
+            //Create record for new Physician appointment on tbl_physician_appointment table
+            $new_appointment = PhysicianAppointment::create([
+                'Physician_ID'                 =>   $Physician_ID->Physician_ID,
+                'Medical_Record_No'            =>   $request->get('PatientID'),
+                'Appointment_Date'             =>   $request->get('datepicker'),
+                'Appointment_Time'             =>   $request->get('timepicker'),
+                'Appointment_Message'          =>   $request->get('Appointment_Message'),
+            ]);
+
+            if($new_appointment){
+                return back()->with('success', 'Appointment has been created');
+            }else{
+                return back()->with('error', 'Failed  to create appointment');
+            }
         }else{
-            return back()->with('error', 'Failed  to create appointment');
+            return back()->with('error', 'Select Appointment Date and Time');
         }
+        
     }
 }

@@ -51,5 +51,7 @@ $(document).ready(function(){
         showClickHandler();
     }
 
-    
+    $('.cancel').click(function(){
+      $('.riskValue, .appointMent').toggleClass('d-none');
+    });
 });
