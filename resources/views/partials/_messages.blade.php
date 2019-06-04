@@ -1,3 +1,6 @@
+<link href="{{ asset('custom/css/sweetalert2.min.css') }}" rel="stylesheet" type="text/css">
+<script src="{{ asset('custom/js/sweetalert2.min.js') }}" ></script>
+
 {{-- Primary Alert --}}
 @if(Session::has('primary'))
 <div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -20,7 +23,7 @@
 
 @if(Session::has('message1'))
     <script>
-      swal({
+      swal.fire({
             type: 'success',
             title: 'Signed in successfully',
             timer:3000
@@ -29,14 +32,27 @@
 @endif
 
 {{-- Success Alert --}}
-@if(Session::has('success'))
+@if($message = Session::get('success'))
+<script>
+  const Toast = swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+});
 
-<div class="alert alert-success alert-dismissible fade show" role="alert">
+Toast.fire({
+  type: 'success',
+  title: '<?php  echo Session::get("success");  ?>'
+})
+ // swal("Success!!!", "<?php  echo Session::get('success');  ?>", "success");
+</script>
+{{-- <div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>Success!</strong> {{ Session::get('success') }}
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span>&times;</span>
   </button>
-</div>
+</div> --}}
 @endif
 
 {{-- Custom Alert --}}
@@ -111,7 +127,7 @@
 
 {{-- If the page has any error passed to it --}}
 @if(count($errors) > 0)
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
+{{-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong class="font-weight-bold">Oops! something went wrong.</strong> 
     <ul>
       @foreach($errors->all() as $error)
@@ -119,48 +135,56 @@
       @endforeach
     </ul>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span>&times;</span>
+      <span>&times;</span>sux
     </button>
-  </div>
-
-  {{-- <script>
-      swal({
-        type: 'error',
-        title: 'Oops! Something went wrong',
-        text: 'Email/Password field is required.'
-       
+  </div> --}}
+  @foreach($errors->all() as $error)
+    <script>
+      const Toast = swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
       });
-    </script> --}}
+      
+      Toast.fire({
+        type: 'error',
+        title: '{{ $error }}'
+      })
+    </script>
+  @endforeach
 @endif
 
 @if ($message = Session::get('error'))
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>Error!</strong> {{ $message }}
+{{-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Note to User!</strong> {{ $message }}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span>&times;</span>
     </button>
-  </div>
+  </div> --}}
 
-  {{-- <script>
+  <script>
 
-// const Toast = swal.mixin({
-//   toast: true,
-//   position: 'top-end',
-//   showConfirmButton: false,
-//   timer: 3000
-// });
 
-// Toast.fire({
-//   type: 'success',
-//   title: 'Signed in successfully'
-// })
-      swal({
-        type: 'error',
-        // title: 'Oops! Something went wrong',
-        text: '{{$message}}',
+      const Toast = swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
         timer: 3000
       });
-  </script> --}}
+      
+      Toast.fire({
+        type: 'error',
+        title: '{{ $message }}'
+      })
+    
+      // swal.fire({
+      //   type: 'error',
+      //   // title: 'Oops! Something went wrong',
+      //   text: {{$message}},
+      //   timer: 3000
+      // });
+  </script>
 @endif
 {{-- @if($errors->has('email'))
   <span class="invalid-feedback">

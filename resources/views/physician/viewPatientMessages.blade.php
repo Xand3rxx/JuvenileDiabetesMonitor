@@ -12,6 +12,7 @@
             
           <h5 class="card-title mb-4">Manage Messages</h5>
           <div class="fluid-container">
+            @if ($messageCount > 0)
             @foreach ($patientMessage as $item)
             <div class="row ticket-card mt-3 pb-2 border-bottom pb-3 mb-3">
                 <div class="col-md-1">
@@ -61,9 +62,11 @@
                   {{-- </div> --}}
                 </div>
               </div>
-
-              
             @endforeach
+            @else
+              <p class="text-danger font-weight-semibold mr-2 mb-0 no-wrap"> Sorry! No messages from {{ $profile->First_Name}} {{ $profile->Last_Name }}</p>
+            @endif
+           
           </div>
         </div>
       </div>
@@ -98,6 +101,7 @@
           <button type="button" class="mdl-button" disabled>Inactive action</button>
       </div> --}}
   </dialog>
-  
+
+ 
   
 @endsection

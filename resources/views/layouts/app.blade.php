@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Juvenile Diabetes Monitor- @yield('title') </title>
+        <title>@yield('title') - Juvenile Diabetes Monitor</title>
         <!-- plugins:css -->
         <link rel="stylesheet" href="{{ asset('custom/vendors/iconfonts/mdi/css/materialdesignicons.min.css') }}">
         <script src="{{ asset('custom/js/jquery.min.js') }}"></script>
@@ -15,7 +15,9 @@
         <!-- End plugin css for this page -->
         <!-- inject:css -->
         <link rel="stylesheet" href="{{ asset('custom/css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('custom/css/sweetalert2.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('custom/css/bootstrap-datetimepicker.css') }}">
+        <script src="{{ asset('custom/js/jquery.min.js') }}"></script>
+        
         <!-- endinject -->
         <link rel="shortcut icon" href="{{ asset('custom/images/favicon.png') }}" />
     </head>
@@ -53,49 +55,18 @@
         <!-- endinject -->
         <!-- Custom js for this page-->
         <script src="{{ asset('custom/js/dashboard.js') }}"></script>
-        <script src="{{ asset('custom/js/sweetalert2.min.js') }}"></script>
         <script src="{{ asset('custom/js/dialog-polyfill.js') }}"></script>
+        <script src="{{ asset('custom/js/dialog.js') }}"></script>
+        <script src="{{ asset('custom/js/bootstrap-datetimepicker.js') }}"></script>
         <script>
             $(document).ready(function (){
                 //Initialize bootstrap tooltip plugin
                 $('[data-toggle="tooltip"]').tooltip();
-
-
+                
             });
         </script>
-        <script>
-            (function() {
-                'use strict';
-                $(document).on('click', '.show-modal-example', function(){
-                    // $(this).closest('div.item-list').find('.pulse-show');
-                    // let msgTitle = $(this).closest('p').find('.msgTitle').text();
-                    let msgTitle = $('div.msgTitle').data('title');
-
-                    console.log(msgTitle);
-                    showClickHandler();
-                });
-
-                $(document).on('click', '.close-modal-example', function(){
-                    closeClickHandler();
-                });
-
-                var dialog = document.querySelector('#modal-example');
-                var closeButton = dialog.querySelector('button');
-                var showButton = document.querySelector('.show-modal-example');
-                if (! dialog.showModal) {
-                    dialogPolyfill.registerDialog(dialog);
-                }
-                var closeClickHandler = function(event) {
-                    dialog.close();
-                };
-                var showClickHandler = function(event) {
-                    dialog.showModal();
-
-                };
-                // showButton.addEventListener('click', showClickHandler);
-                // closeButton.addEventListener('click', closeClickHandler);
-            }());
-        </script>
+      
+       
         <!-- End custom js for this page-->
     </body>
 </html>

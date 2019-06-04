@@ -47,7 +47,7 @@ class PhysicianController extends Controller
 
         //Return Appointment Table for current date
         $appointmentTable = DB::table('tbl_physician_appointment')
-        ->join('tbl_patient_information', 'tbl_patient_information.id', '=', 'tbl_physician_appointment.id')->where('tbl_physician_appointment.Physician_ID', $Physician_ID)
+        ->join('tbl_patient_information', 'tbl_patient_information.Medical_Record_No', '=', 'tbl_physician_appointment.Medical_Record_No')->where('tbl_physician_appointment.Physician_ID', $Physician_ID)
         ->whereDate('Appointment_Date', \Carbon\Carbon::today())->orderBy('Appointment_Time', 'asc')->get();
 
         //Return total number of appointments for a Physician for all time
@@ -133,13 +133,26 @@ class PhysicianController extends Controller
 
     public function allPatients(){
         /*
-            Controller method to return all information for all registered patients
+            Controller method to return all information for all registered Patients
         */
 
         //Return all patients bio-data
         $patientsBioData = PatientInformation::all();
 
         return view('physician.allPatients', compact('patientsBioData'))->with('i');
+    }
+
+    public function allPhysicians(){
+        /*
+            Controller method to return all information for all registered Physicians
+        */
+
+        //Return all patients bio-data
+        $physiciansBioData = PhysicianInformation::all();
+        // $physiciansBioData = $physiciansBioData->paginate(10);
+
+        // return view('physician.allPhysicians', compact('physiciansBioData'))->with('i', (request()->input('page', 1) -1)*10);
+        return view('physician.allPhysicians', compact('physiciansBioData'))->with('i');
     }
 
     public function allAppointments(){
@@ -155,7 +168,7 @@ class PhysicianController extends Controller
 
         //Return Appointment Table for current date
         $appointmentTable = DB::table('tbl_physician_appointment')
-        ->join('tbl_patient_information', 'tbl_patient_information.id', '=', 'tbl_physician_appointment.id')->where('tbl_physician_appointment.Physician_ID', $Physician_ID)
+        ->join('tbl_patient_information', 'tbl_patient_information.Medical_Record_No', '=', 'tbl_physician_appointment.Medical_Record_No')->where('tbl_physician_appointment.Physician_ID', $Physician_ID)
         ->whereDate('Appointment_Date', \Carbon\Carbon::today())->orderBy('Appointment_Time', 'asc')->get();
 
         //Return total number of appointments for a Physician on current date
@@ -163,10 +176,17 @@ class PhysicianController extends Controller
 
         //Return all previous appointments Table for Physician
         $previousAppointmentTable = DB::table('tbl_physician_appointment')
-        ->join('tbl_patient_information', 'tbl_patient_information.id', '=', 'tbl_physician_appointment.id')->where('tbl_physician_appointment.Physician_ID', $Physician_ID)
-        ->whereDate('Appointment_Date', '!=', \Carbon\Carbon::today())->orderBy('Appointment_Time', 'asc')->get();
+        ->join('tbl_patient_information', 'tbl_patient_information.Medical_Record_No', '=', 'tbl_physician_appointment.Medical_Record_No')->where('tbl_physician_appointment.Physician_ID', $Physician_ID)
+        ->whereDate('Appointment_Date', '<', \Carbon\Carbon::today())->orderBy('Appointment_Date', 'asc')->get();
 
-        return view('physician.allAppointments', compact('appointmentTable', 'totalAppointmentsToday', 'previousAppointmentTable'))->with('i');
+        $upcomingAppointmentTable = DB::table('tbl_physician_appointment')
+        ->join('tbl_patient_information', 'tbl_patient_information.Medical_Record_No', '=', 'tbl_physician_appointment.Medical_Record_No')->where('tbl_physician_appointment.Physician_ID', $Physician_ID)
+        ->whereDate('Appointment_Date', '>', \Carbon\Carbon::today())->orderBy('Appointment_Time', 'asc')->get();
+
+        //Return total number of upcoming appointments for a Physician 
+        $totalUpcomingAppointments = $upcomingAppointmentTable->count();
+
+        return view('physician.allAppointments', compact('appointmentTable', 'totalAppointmentsToday', 'previousAppointmentTable', 'upcomingAppointmentTable', 'totalUpcomingAppointments'))->with('i');
 
         // return response()->json(compact('previousAppointmentTable'));
 
@@ -230,6 +250,7 @@ class PhysicianController extends Controller
         $glucoseValues = GlucoseValues::where('Medical_Record_No', $id)->get();
         $insulinValues = InsulinValues::where('Medical_Record_No', $id)->get();
         $glucoseValuesCount = $glucoseValues->count();
+
         $gluMeasurement = array();
         $gluMeasurement1 = array();
         $gluDate = array();
@@ -278,9 +299,35 @@ class PhysicianController extends Controller
         }
         $patientProfile = PatientInformation::where('Medical_Record_No', $id)->get();
 
-        $patientMessage = Messages::where('Medical_Record_No', $id)
+        $patientMessage = Messages::where('Medical_Record_No', $id)        
         ->where('Physician_ID', $Physician_ID)->latest('SentDate')->get();
-        // return response()->json($patientProfile);
-        return view('physician.viewPatientMessages', compact('patientMessage', 'patientProfile'));
+        $messageCount = $patientMessage->count();
+
+        // return response()->json($messageCount);
+        return view('physician.viewPatientMessages', compact('patientMessage', 'patientProfile', 'messageCount'));
+    }
+
+    public function physicianScheduleAppointment(Request $request){
+        /*
+            Controller method to enable a Physician schedule an appointment wiht a Patient
+        */
+
+        //Get Physician ID
+        $Physician_ID = PhysicianInformation::select('Physician_ID')->where('id', Auth::user()->id)->first();
+
+        //Create record for new Physician appointment on tbl_physician_appointment table
+        $new_appointment = PhysicianAppointment::create([
+            'Physician_ID'                 =>   $Physician_ID->Physician_ID,
+            'Medical_Record_No'            =>   $request->get('PatientID'),
+            'Appointment_Date'             =>   $request->get('datepicker'),
+            'Appointment_Time'             =>   $request->get('timepicker'),
+            'Appointment_Message'          =>   $request->get('Appointment_Message'),
+        ]);
+
+        if($new_appointment){
+            return back()->with('success', 'Appointment has been created');
+        }else{
+            return back()->with('error', 'Failed  to create appointment');
+        }
     }
 }

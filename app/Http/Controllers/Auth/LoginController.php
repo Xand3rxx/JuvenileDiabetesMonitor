@@ -75,13 +75,31 @@ class LoginController extends Controller
         );
 
         if(Auth::attempt($user_data)){
+            //Assign the user id to UserID variable
             $this->UserID = Auth::user()->id;
+            //Assign the user type to UserType variable
             $this->UserType = Auth::user()->user_type;
-            // $this->UserType = DB::table('users')->select('UserRoleID', 'FullName')->where('id','=',$this->UserID)->first();
+            
+            //Return view by UserType
             if($this->UserType === 'Physician'){
-                return redirect()->route('physicianHome');
+                //Get Physician First and Last names
+                $physiciain_name = DB::table('tbl_physician_information')->select('First_Name', 'Last_Name')->where('id','=',$this->UserID)->first();
+                foreach ($physiciain_name as $name){
+                    $names[] = $name;
+                }
+
+                return redirect()->route('physicianHome')
+                ->with('success', 'Welcome, Dr. '.$names[0].' '.$names[1]);
+                // return response()->json($physiciain_name);
             }else{
-                return redirect()->route('patientHome');
+                //Get Patient First and Last names
+                $patient_name = DB::table('tbl_patient_information')->select('First_Name', 'Last_Name')->where('id','=',$this->UserID)->first();
+                foreach ($patient_name as $name1){
+                    $names1[] = $name1;
+                }
+
+                return redirect()->route('patientHome')
+                ->with('success', 'Welcome, '.$names1[0].' '.$names1[1]);
             }
         }else{
             return back()->with('error','Wrong Login Credentials');
@@ -107,13 +125,13 @@ class LoginController extends Controller
             } 
         }      
         else{
-            return redirect()->route('logout');
+            return redirect()->route('logout')->with('error', 'Your session expired, Sign In.');
         }
     }
 
     function logout(){
-       Auth::logout();
-       return redirect('/')
-       ->with('success', 'You are logged out!');
+        Auth::logout();
+        return redirect('/login')
+        ->with('success', 'You are logged out!');
    }
 }

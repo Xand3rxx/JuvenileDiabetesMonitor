@@ -9,8 +9,9 @@ class PhysicianAppointment extends Model
     //
 
     public $table = "tbl_physician_appointment";
+    public $timestamps = false;
 
     protected $fillable = [
-        'id', 'Physician_ID', 'Appointment_Time', 'DateCreated',
+        'id', 'Medical_Record_No', 'Physician_ID', 'Appointment_Date', 'Appointment_Time', 'Appointment_Message', 'DateCreated',
     ];
 }

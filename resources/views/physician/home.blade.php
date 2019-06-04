@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Physician Dashboard')
 @section('content')
+@include('partials._messages')
     {{-- <div class="row purchace-popup">
       <div class="col-12">
         <span class="d-block d-md-flex align-items-center">
@@ -11,6 +12,15 @@
         </span>
       </div>
     </div> --}}
+    <style>
+      a{
+        color: #212529;
+      }
+      a:hover{
+        text-decoration: none;
+
+      }
+    </style>
     <div class="row">
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
             <div class="card card-statistics">
@@ -22,7 +32,7 @@
                   <div class="float-right">
                     <p class="mb-0 text-right">Total Patients</p>
                     <div class="fluid-container">
-                      <h3 class="font-weight-medium text-right mb-0">{{ $totalPatients }}</h3>
+                    <h3 class="font-weight-medium text-right mb-0"><a href="{{ url('physician-all-patients') }}">{{ $totalPatients }}</a></h3>
                     </div>
                   </div>
                 </div>
@@ -42,7 +52,7 @@
               <div class="float-right">
                 <p class="mb-0 text-right">New Appointments</p>
                 <div class="fluid-container">
-                  <h3 class="font-weight-medium text-right mb-0">{{ $totalAppointmentsToday }}</h3>
+                  <h3 class="font-weight-medium text-right mb-0"><a href="{{ url('physician-appointment') }}">{{ $totalAppointmentsToday }}</a></h3>
                 </div>
               </div>
             </div>
@@ -62,7 +72,7 @@
               <div class="float-right">
                 <p class="mb-0 text-right">Total Appointments</p>
                 <div class="fluid-container">
-                  <h3 class="font-weight-medium text-right mb-0">{{ $totalAppointments }}</h3>
+                  <h3 class="font-weight-medium text-right mb-0"><a href="{{ url('physician-appointment') }}">{{ $totalAppointments }}</a></h3>
                 </div>
               </div>
             </div>
@@ -82,7 +92,7 @@
               <div class="float-right">
                 <p class="mb-0 text-right">Total Physicians</p>
                 <div class="fluid-container">
-                  <h3 class="font-weight-medium text-right mb-0">{{ $totalPhysicians }}</h3>
+                <h3 class="font-weight-medium text-right mb-0"><a href="{{ url('physician-all-physicians') }}">{{ $totalPhysicians }}</a></h3>
                 </div>
               </div>
             </div>
@@ -162,6 +172,7 @@
                     <tr>
                       <th>S/N</th>
                       <th>Full Name</th>
+                      <th>Appointment Date</th> 
                       <th>Appointment Time</th> 
                     </tr>
                   </thead>
@@ -171,7 +182,18 @@
                         <tr class="text-info">
                           <td class="font-weight-medium">{{ ++$i }}</td>
                           <td>{{ $item->First_Name }} {{ $item->Middle_Name }} {{ $item->Last_Name }}</td>
-                          <td><?php echo date('i:s A', strtotime($item->Appointment_Time)); ?></td>
+                          <td>
+                              <?php 
+                                $date = \Carbon\Carbon::parse($item->Appointment_Date, 'UTC');
+                                echo $date->isoFormat('MMMM Do YYYY');
+                              ?>
+                            </td>
+                            <td>
+                              <?php 
+                                $time = \Carbon\Carbon::parse($item->Appointment_Time, 'UTC');
+                                echo $time->isoFormat('h:mm A');
+                              ?>
+                            </td>
                         </tr>
                       @endforeach
                     @else

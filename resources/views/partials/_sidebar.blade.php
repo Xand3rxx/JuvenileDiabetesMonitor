@@ -38,7 +38,7 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="{{ url('all-patients') }}">
+        <a class="nav-link" href="{{ url('physician-all-patients') }}">
           <i class="menu-icon mdi mdi-account-multiple"></i>
           <span class="menu-title">All Patitents</span>
         </a>

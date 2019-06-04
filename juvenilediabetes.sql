@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 28, 2019 at 08:08 PM
+-- Generation Time: Jun 04, 2019 at 08:51 PM
 -- Server version: 5.7.24
 -- PHP Version: 5.6.40
 
@@ -600,15 +600,15 @@ CREATE TABLE IF NOT EXISTS `tbl_patient_information` (
 
 INSERT INTO `tbl_patient_information` (`Medical_Record_No`, `Physician_ID`, `id`, `First_Name`, `Middle_Name`, `Last_Name`, `Date_of_Birth`, `Gender`, `Guardian1_Name`, `Guardian2_Name`, `Guardian1_mobile_No`, `Guardian2_mobile_No`, `Guardian1_Email`, `Guardian2_Email`, `Avatar`) VALUES
 (100100, 995682250, 2, 'Andrew', 'Mark', 'Davidson', '2014-10-15', 'Male', 'Esther Davidson', 'Bryan Davidson', '+6788542510168', '+15855551208646', 'esther@fakeemail.com', 'bryan@fakeemail.com', '907392738.png'),
-(962671218, 8759375905, 4, 'Garfield', 'Steven', 'James', '2014-12-15', 'Male', 'Diana Garfield', 'Frederick Garfield', '+1322288780587', '+2117466134573', 'diana@realgmail.com', 'frederick@realgmail.com', '2036220974.jpg'),
-(3292205816, 5159142180, 6, 'Kattie', 'Kiehn', 'Corwin', '2009-06-30', 'Female', 'Damaris Hills PhD', 'Theresa Russel', '+2118005262498', '+4585557958646', 'ladarius.hagenes@example.com', 'amely.wehner@example.org', '4567890123.png'),
-(7381007481, 1266123909, 8, 'Lavon', 'Ebert', 'Schowalter', '2014-06-08', 'Male', 'Vidal Waters', 'Madalyn Cormier', '+1324253120567', '+1322288780587', 'isabel.blanda@example.org', 'yschaefer@example.com', '321270326.jpg'),
-(2976084722, 8490302731, 10, 'Myriam', 'Roberts', 'Crist', '2008-10-23', 'Female', 'Mr. Xavier Hammes PhD', 'Zane Mante', '+9556998918251', '+2168225872623', 'dallin44@example.com', 'skonopelski@example.org', '345678912.jpg'),
-(2757128552, 2244489743, 12, 'Joannie', 'Vandervort', 'Denesik', '2009-03-02', 'Female', 'Prof. Albin Abbott MD', 'Soledad Kunde PhD', '+1787022290561', '+2600011546092', 'jadon80@example.com', 'schmidt.loma@example.com', '440494984.jpg'),
-(5655064793, 8658668937, 14, 'Cesar', 'Wilkinson', 'Kuphal', '2010-12-21', 'Male', 'Amiya Thiel', 'Ryder Sawayn PhD', '+7696364501232', '+1156164913471', 'kessler.jamison@example.org', 'cynthia60@example.net', '1226540365.jpg'),
-(4968805396, 5584777139, 16, 'Queen', 'Mitchell', 'Sanford', '2013-03-19', 'Female', 'Demond Corkery', 'Obie Olson', '+9748805318521', '+3117466182146', 'olga.anderson@example.org', 'adelbert.raynor@example.com', '234567891.png'),
-(4450036668, 9435552631, 18, 'Keegan', 'O\'Keefe', 'Moen', '2012-07-06', 'Male', 'Kristoffer Cole', 'Wilber Grady', '+7630706341094', '+8547420098748', 'rjacobs@example.org', 'josefina.stehr@example.org', '464950338.jpg'),
-(6193501181, 3938297255, 20, 'Hailey', 'Bartell', 'Pacocha', '2011-07-20', 'Female', 'Dr. Nettie Kiehn', 'Ryan Stokes', '+7748536235992', '+6788542510168', 'hrippin@example.org', 'klein.edwardo@example.org', '123456789.jpg');
+(962671, 875937590, 4, 'Garfield', 'Steven', 'James', '2014-12-15', 'Male', 'Diana Garfield', 'Frederick Garfield', '+1322288780587', '+2117466134573', 'diana@realgmail.com', 'frederick@realgmail.com', '2036220974.jpg'),
+(329220, 515914218, 6, 'Kattie', 'Kiehn', 'Corwin', '2009-06-30', 'Female', 'Damaris Hills PhD', 'Theresa Russel', '+2118005262498', '+4585557958646', 'ladarius.hagenes@example.com', 'amely.wehner@example.org', '4567890123.png'),
+(738100, 126612390, 8, 'Lavon', 'Ebert', 'Schowalter', '2014-06-08', 'Male', 'Vidal Waters', 'Madalyn Cormier', '+1324253120567', '+1322288780587', 'isabel.blanda@example.org', 'yschaefer@example.com', '321270326.jpg'),
+(297608, 849030273, 10, 'Myriam', 'Roberts', 'Crist', '2008-10-23', 'Female', 'Mr. Xavier Hammes PhD', 'Zane Mante', '+9556998918251', '+2168225872623', 'dallin44@example.com', 'skonopelski@example.org', '345678912.jpg'),
+(275712, 224448974, 12, 'Joannie', 'Vandervort', 'Denesik', '2009-03-02', 'Female', 'Prof. Albin Abbott MD', 'Soledad Kunde PhD', '+1787022290561', '+2600011546092', 'jadon80@example.com', 'schmidt.loma@example.com', '440494984.jpg'),
+(565506, 865866893, 14, 'Cesar', 'Wilkinson', 'Kuphal', '2010-12-21', 'Male', 'Amiya Thiel', 'Ryder Sawayn PhD', '+7696364501232', '+1156164913471', 'kessler.jamison@example.org', 'cynthia60@example.net', '1226540365.jpg'),
+(496880, 558477713, 16, 'Queen', 'Mitchell', 'Sanford', '2013-03-19', 'Female', 'Demond Corkery', 'Obie Olson', '+9748805318521', '+3117466182146', 'olga.anderson@example.org', 'adelbert.raynor@example.com', '234567891.png'),
+(445003, 943555263, 18, 'Keegan', 'O\'Keefe', 'Moen', '2012-07-06', 'Male', 'Kristoffer Cole', 'Wilber Grady', '+7630706341094', '+8547420098748', 'rjacobs@example.org', 'josefina.stehr@example.org', '464950338.jpg'),
+(619350, 393829725, 20, 'Hailey', 'Bartell', 'Pacocha', '2011-07-20', 'Female', 'Dr. Nettie Kiehn', 'Ryan Stokes', '+7748536235992', '+6788542510168', 'hrippin@example.org', 'klein.edwardo@example.org', '123456789.jpg');
 
 -- --------------------------------------------------------
 
@@ -662,26 +662,29 @@ CREATE TABLE IF NOT EXISTS `tbl_patient_reason` (
 
 DROP TABLE IF EXISTS `tbl_physician_appointment`;
 CREATE TABLE IF NOT EXISTS `tbl_physician_appointment` (
-  `Appintment_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `Appointment_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Medical_Record_No` bigint(6) UNSIGNED NOT NULL,
   `Physician_ID` bigint(9) UNSIGNED NOT NULL,
   `Appointment_Date` date NOT NULL,
   `Appointment_Time` time NOT NULL,
-  `DateCreated` timestamp NOT NULL,
-  PRIMARY KEY (`Appintment_ID`),
-  KEY `tbl_physician_appointment_id_index` (`id`),
+  `Appointment_Message` text COLLATE utf8mb4_unicode_ci,
+  `DateCreated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Appointment_ID`),
+  KEY `tbl_physician_appointment_id_index` (`Medical_Record_No`),
   KEY `tbl_physician_appointment_physician_id_index` (`Physician_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tbl_physician_appointment`
 --
 
-INSERT INTO `tbl_physician_appointment` (`Appintment_ID`, `id`, `Physician_ID`, `Appointment_Date`, `Appointment_Time`, `DateCreated`) VALUES
-(1, 4, 995682250, '2019-05-05', '00:08:30', '2019-05-04 23:08:00'),
-(2, 2, 995682250, '2019-05-05', '00:11:00', '2019-05-04 23:11:00'),
-(3, 6, 995682250, '2019-04-02', '09:15:00', '2019-04-30 23:00:00'),
-(4, 8, 995682250, '2019-05-10', '16:30:00', '2019-05-09 23:00:00');
+INSERT INTO `tbl_physician_appointment` (`Appointment_ID`, `Medical_Record_No`, `Physician_ID`, `Appointment_Date`, `Appointment_Time`, `Appointment_Message`, `DateCreated`) VALUES
+(1, 100100, 995682250, '2019-05-05', '08:00:00', '', '2019-05-04 23:08:00'),
+(2, 962671, 995682250, '2019-05-05', '11:00:00', '', '2019-05-04 23:11:00'),
+(3, 329220, 995682250, '2019-04-02', '09:15:00', '', '2019-04-30 23:00:00'),
+(4, 100100, 995682250, '2019-05-10', '16:30:00', '', '2019-05-09 23:00:00'),
+(5, 100100, 995682250, '2019-06-04', '22:00:00', 'Need to schedule a Glucose test with you Andrew David.', '2019-06-04 19:39:44'),
+(6, 100100, 995682250, '2019-06-30', '08:30:00', 'Need to schedule an Insulin test with you Andrew', '2019-06-04 20:06:40');
 
 -- --------------------------------------------------------
 
@@ -709,18 +712,18 @@ CREATE TABLE IF NOT EXISTS `tbl_physician_information` (
 --
 
 INSERT INTO `tbl_physician_information` (`Physician_ID`, `id`, `First_Name`, `Middle_Name`, `Last_Name`, `Mobile_No`, `Gender`, `Avatar`) VALUES
-(995682250, 1, 'Margaret', 'Padberg', 'Maggio', '+8255802029733', 'Female', '325235235.jpg'),
-(8759375905, 3, 'Phyllis', 'Crist', 'Okuneva', '+5888001741238', 'Female', NULL),
-(5159142180, 5, 'Gust', 'Volkman', 'Rodriguez', '+8794253425131', 'Male', NULL),
-(1266123909, 7, 'Steve', 'Weissnat', 'Durgan', '+3976410668379', 'Male', NULL),
-(8490302731, 9, 'Andria', 'Monahan', 'Schaefer', '+4914111202673', 'Female', NULL),
-(2244489743, 11, 'Litzy', 'Schmeler', 'Hammes', '+6997102798902', 'Female', NULL),
-(8658668937, 13, 'Mohamed', 'Graham', 'Herzog', '+8664495371522', 'Male', NULL),
-(5584777139, 15, 'Thelma', 'Conn', 'Schaden', '+4027107615369', 'Female', NULL),
-(9435552631, 17, 'Xzavier', 'Wiza', 'Thiel', '+2567107830188', 'Male', NULL),
-(3938297255, 19, 'Cydney', 'Bayer', 'Bauch', '+6493689808082', 'Female', NULL),
-(1234567743, 26, 'John', 'O.', 'Mark', '09035547107', 'Male', 'user_avatar.jpg'),
-(1234567890, 25, 'Anthony', 'O.', 'Joboy', '+123678349348', 'Male', '2036220974.jpg');
+(995682250, 1, 'Margaret', 'Padberg', 'Maggio', '+8255802029733', 'Female', 'FemaleDoctor.jpg'),
+(875937590, 3, 'Phyllis', 'Crist', 'Okuneva', '+5888001741238', 'Female', 'FemaleDoctor.jpg'),
+(515914218, 5, 'Gust', 'Volkman', 'Rodriguez', '+8794253425131', 'Male', 'MaleDoctor.jpg'),
+(126612390, 7, 'Steve', 'Weissnat', 'Durgan', '+3976410668379', 'Male', 'MaleDoctor.jpg'),
+(849030273, 9, 'Andria', 'Monahan', 'Schaefer', '+4914111202673', 'Female', 'FemaleDoctor.jpg'),
+(224448974, 11, 'Litzy', 'Schmeler', 'Hammes', '+6997102798902', 'Female', 'FemaleDoctor.jpg'),
+(865866893, 13, 'Mohamed', 'Graham', 'Herzog', '+8664495371522', 'Male', 'MaleDoctor.jpg'),
+(558477713, 15, 'Thelma', 'Conn', 'Schaden', '+4027107615369', 'Female', 'FemaleDoctor.jpg'),
+(943555263, 17, 'Xzavier', 'Wiza', 'Thiel', '+2567107830188', 'Male', 'MaleDoctor.jpg'),
+(393829725, 19, 'Cydney', 'Bayer', 'Bauch', '+6493689808082', 'Female', 'FemaleDoctor.jpg'),
+(433456774, 21, 'John', 'Osteen', 'Mark', '+9035547107656', 'Male', 'MaleDoctor.jpg'),
+(923456789, 22, 'Alexander', 'Joshua', 'McKenzie', '+123678349348', 'Male', 'MaleDoctor.jpg');
 
 -- --------------------------------------------------------
 
@@ -765,8 +768,8 @@ INSERT INTO `users` (`id`, `email`, `password`, `user_type`, `DateCreated`, `Dat
 (18, 'christiansen.adele@example.org', '$2y$10$oaGrFSxKrqEROHl53am4DuDP2mFuCkDLXGbhhoog7h3I2yTp7jEdq', 'Patient', '1991-06-17 08:54:12', NULL),
 (19, 'smith.baby@example.org', '$2y$10$qD7RuYrhVXei7o4kxApYMugWkSJiDdZxF6G/okMCDcXPChQjsiXza', 'Physician', '2014-03-21 12:24:20', NULL),
 (20, 'samir14@example.org', '$2y$10$dSbTyhDnI25U6CjOq/LQcuQjdFPD9rbOepb9/GJjHTF4laNs3y6Ja', 'Patient', '1994-05-09 04:43:34', NULL),
-(25, 'anthonyjoboy2016@gmail.com', '$2y$10$pETgz5i9zL9Hk3FnRgrYJ.0rDDVZCxNjl0niOYkS4GI6i4Ew3thTO', 'Physician', '2019-05-10 18:17:20', NULL),
-(26, 'jmark@hotmail.com', '$2y$10$iwf3zxHoqY3ZP0c2DzH6L.PxNdAOxNJ7L0NitSlYXaXoiEi33z9/m', 'Physician', '2019-05-10 18:20:11', NULL);
+(21, 'anthonyjoboy2016@gmail.com', '$2y$10$pETgz5i9zL9Hk3FnRgrYJ.0rDDVZCxNjl0niOYkS4GI6i4Ew3thTO', 'Physician', '2019-05-10 18:17:20', '2019-06-04 17:48:24'),
+(22, 'jmark@hotmail.com', '$2y$10$iwf3zxHoqY3ZP0c2DzH6L.PxNdAOxNJ7L0NitSlYXaXoiEi33z9/m', 'Physician', '2019-05-10 18:20:11', '2019-06-04 17:48:34');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
