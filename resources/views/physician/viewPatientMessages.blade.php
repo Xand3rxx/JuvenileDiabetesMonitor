@@ -222,7 +222,8 @@ img{ max-width:100%;}
                     <input value="{{ $profile->Medical_Record_No }}" name="Medical_Record_No" class="d-none">
                   <input value="{{ $doc->Physician_ID }}" name="Physician_ID" class="d-none">
                   <input type="text" name="Message_Body" class="write_msg" placeholder="Send {{ $profile->First_Name}} {{ $profile->Last_Name }} a message" />
-                  <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                  {{-- <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button> --}}
+                  <button class="msg_send_btn" type="submit"><i class="menu-icon mdi mdi-send" aria-hidden="true"></i></button>
                   </form>
                 </div>
               </div>

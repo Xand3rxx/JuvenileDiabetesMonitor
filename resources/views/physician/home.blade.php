@@ -22,7 +22,7 @@
       }
     </style>
     <div class="row">
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-md-4 col-sm-6 grid-margin stretch-card">
             <div class="card card-statistics">
               <div class="card-body">
                 <div class="clearfix">
@@ -42,7 +42,7 @@
               </div>
             </div>
           </div>
-      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
         <div class="card card-statistics">
           <div class="card-body">
             <div class="clearfix">
@@ -62,7 +62,7 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
         <div class="card card-statistics">
           <div class="card-body">
             <div class="clearfix">
@@ -79,6 +79,28 @@
             <p class="text-muted mt-3 mb-0">
               <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Total Appointments so far
             </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+        <div class="card card-statistics">
+          <div class="card-body">
+            <div class="clearfix">
+              <p class="mb-0 text-right">Risk Score Classification</p>
+                <div class="fluid-container">
+                  <ul class="list-ticked" style="font-size: 0.75em">
+                    <li>1 = Insignificant Risk</li>
+                    <li>2 = Minor Risk</li>
+                    <li>3 = Moderate Risk</li>
+                    <li>4 = Major Risk</li>
+                    <li>5 = Severe Risk</li>
+                  </ul>
+              
+              </div>
+            </div>
+            {{-- <p class="text-muted mt-3 mb-0">
+              <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> Number of registered Physicians
+            </p> --}}
           </div>
         </div>
       </div>
@@ -124,20 +146,14 @@
                 <tbody>              
                       <tr class="text-danger">
                         <td class="font-weight-medium">1</td>
-                        <td>Herman Beck </td>
+                        <td><a href="{{ route('patientCarePod', 100100) }}" class="text-danger">Andrew Mark Davidson </a></td>
                         <td>4</td>
-                        <td><i class="mdi mdi-eye"></i></td>
+                        {{-- <td><i class="mdi mdi-eye"></i></td> --}}
                         {{-- <td><a href="{{ route('patientCarePod', $item->Medical_Record_No) }}"><i class="mdi mdi-eye"></a></td> --}}
+                        <td><a href="{{ route('patientCarePod', 100100) }}" class="text-danger"><i class="mdi mdi-eye"></a></td>
                         <td id="remove_risk"><i class="mdi mdi-close"></i></td> 
                       </tr>                         
-                      <tr class="text-danger">
-                          <td class="font-weight-medium">3</td>
-                          <td>Gene Hackman </td>
-                          <td>5</td>
-                          <td><i class="mdi mdi-eye"></i></td>
-                          {{-- <td><a href="{{ route('patientCarePod', $item->Medical_Record_No) }}"><i class="mdi mdi-eye"></a></td> --}}
-                          <td id="remove_risk"><i class="mdi mdi-close"></i></td> 
-                        </tr>                            
+                                               
                 </tbody>
               </table>
             </div>
