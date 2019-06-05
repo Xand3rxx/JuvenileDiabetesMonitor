@@ -22,7 +22,7 @@
       }
     </style>
     <div class="row">
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
             <div class="card card-statistics">
               <div class="card-body">
                 <div class="clearfix">
@@ -42,7 +42,7 @@
               </div>
             </div>
           </div>
-      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
         <div class="card card-statistics">
           <div class="card-body">
             <div class="clearfix">
@@ -62,7 +62,7 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+      <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
         <div class="card card-statistics">
           <div class="card-body">
             <div class="clearfix">
@@ -82,7 +82,7 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+      {{-- <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
         <div class="card card-statistics">
           <div class="card-body">
             <div class="clearfix">
@@ -101,7 +101,7 @@
             </p>
           </div>
         </div>
-      </div>
+      </div> --}}
     </div>
 
     
@@ -118,6 +118,7 @@
                     <th>Full Name</th>
                     <th>Risk Level</th>
                     <th>View</th> 
+                    <th>Dismiss</th> 
                   </tr>
                 </thead>
                 <tbody>              
@@ -128,31 +129,15 @@
                         <td><i class="mdi mdi-eye"></i></td>
                         {{-- <td><a href="{{ route('patientCarePod', $item->Medical_Record_No) }}"><i class="mdi mdi-eye"></a></td> --}}
                         <td id="remove_risk"><i class="mdi mdi-close"></i></td> 
-                      </tr>    
+                      </tr>                         
                       <tr class="text-danger">
-                          <td class="font-weight-medium">2</td>
-                          <td>Ryan Reynolds </td>
-                          <td>2</td>
+                          <td class="font-weight-medium">3</td>
+                          <td>Gene Hackman </td>
+                          <td>5</td>
                           <td><i class="mdi mdi-eye"></i></td>
                           {{-- <td><a href="{{ route('patientCarePod', $item->Medical_Record_No) }}"><i class="mdi mdi-eye"></a></td> --}}
                           <td id="remove_risk"><i class="mdi mdi-close"></i></td> 
-                        </tr>  
-                        <tr class="text-danger">
-                            <td class="font-weight-medium">3</td>
-                            <td>Gene Hackman </td>
-                            <td>5</td>
-                            <td><i class="mdi mdi-eye"></i></td>
-                            {{-- <td><a href="{{ route('patientCarePod', $item->Medical_Record_No) }}"><i class="mdi mdi-eye"></a></td> --}}
-                            <td id="remove_risk"><i class="mdi mdi-close"></i></td> 
-                          </tr> 
-                          <tr class="text-danger">
-                              <td class="font-weight-medium">4</td>
-                              <td>Brad Traversy</td>
-                              <td>3</td>
-                              <td><i class="mdi mdi-eye"></i></td>
-                              {{-- <td><a href="{{ route('patientCarePod', $item->Medical_Record_No) }}"><i class="mdi mdi-eye"></a></td> --}}
-                              <td id="remove_risk"><i class="mdi mdi-close"></i></td> 
-                            </tr>      
+                        </tr>                            
                 </tbody>
               </table>
             </div>

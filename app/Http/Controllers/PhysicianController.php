@@ -181,7 +181,7 @@ class PhysicianController extends Controller
 
         $upcomingAppointmentTable = DB::table('tbl_physician_appointment')
         ->join('tbl_patient_information', 'tbl_patient_information.Medical_Record_No', '=', 'tbl_physician_appointment.Medical_Record_No')->where('tbl_physician_appointment.Physician_ID', $Physician_ID)
-        ->whereDate('Appointment_Date', '>', \Carbon\Carbon::today())->orderBy('Appointment_Time', 'asc')->get();
+        ->whereDate('Appointment_Date', '>', \Carbon\Carbon::today())->orderBy('Appointment_Date', 'asc')->get();
 
         //Return total number of upcoming appointments for a Physician 
         $totalUpcomingAppointments = $upcomingAppointmentTable->count();
@@ -300,11 +300,11 @@ class PhysicianController extends Controller
         $patientProfile = PatientInformation::where('Medical_Record_No', $id)->get();
 
         $patientMessage = Messages::where('Medical_Record_No', $id)        
-        ->where('Physician_ID', $Physician_ID)->latest('SentDate')->get();
+        ->where('Physician_ID', $Physician_ID)->orderBy('TimeStamp', 'asc')->get();
         $messageCount = $patientMessage->count();
 
         // return response()->json($messageCount);
-        return view('physician.viewPatientMessages', compact('patientMessage', 'patientProfile', 'messageCount'));
+        return view('physician.viewPatientMessages', compact('patientMessage', 'patientProfile', 'messageCount', 'collection'));
     }
 
     public function physicianScheduleAppointment(Request $request){
@@ -331,11 +331,32 @@ class PhysicianController extends Controller
             if($new_appointment){
                 return back()->with('success', 'Appointment has been created');
             }else{
-                return back()->with('error', 'Failed  to create appointment');
+                return back()->with('error', 'Failed to create appointment');
             }
         }else{
             return back()->with('error', 'Select Appointment Date and Time');
         }
         
+    }
+
+    public function messagePatient(Request $request){
+        $valid_info = $request->validate([
+            'Message_Body'         =>  'required',
+        ]);
+
+        if($valid_info){
+            //Create record for new Physician-Patient Message on tbl_patient_physician_messages table
+            $new_message = Messages::create([
+                'Medical_Record_No'            =>   $request->get('Medical_Record_No'),
+                'Physician_ID'                 =>   $request->get('Physician_ID'),
+                'Message_Body'             =>   $request->get('Message_Body'),
+                'Status'             =>   $request->get('Status'),
+            ]);
+            if($new_message){
+                return back()->with('success', 'Message sent');
+            }else{
+                return back()->with('error', 'Message not sent');
+            }
+        }
     }
 }

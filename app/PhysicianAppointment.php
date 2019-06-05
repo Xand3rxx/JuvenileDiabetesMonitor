@@ -12,6 +12,6 @@ class PhysicianAppointment extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id', 'Medical_Record_No', 'Physician_ID', 'Appointment_Date', 'Appointment_Time', 'Appointment_Message', 'DateCreated',
+        'Medical_Record_No', 'Physician_ID', 'Appointment_Date', 'Appointment_Time', 'Appointment_Message', 'DateCreated',
     ];
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 04, 2019 at 08:51 PM
+-- Generation Time: Jun 05, 2019 at 01:26 AM
 -- Server version: 5.7.24
 -- PHP Version: 5.6.40
 
@@ -621,22 +621,22 @@ CREATE TABLE IF NOT EXISTS `tbl_patient_physician_messages` (
   `Message_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Medical_Record_No` bigint(6) NOT NULL,
   `Physician_ID` bigint(9) NOT NULL,
-  `Message_Title` varchar(100) NOT NULL,
   `Message_Body` text NOT NULL,
   `Status` int(1) NOT NULL,
-  `SentDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `RepliedDate` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `TimeStamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Message_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_patient_physician_messages`
 --
 
-INSERT INTO `tbl_patient_physician_messages` (`Message_ID`, `Medical_Record_No`, `Physician_ID`, `Message_Title`, `Message_Body`, `Status`, `SentDate`, `RepliedDate`) VALUES
-(1, 100100, 995682250, 'Severe Tummy Ache', 'Hi Doc, \r\nI\'ve been feeling some tummy ache since I woke up this morning. Is it possible to schedule an immediate checkup, cause I don\'t feel so good. Thanks', 0, '2019-05-20 15:04:45', NULL),
-(2, 100100, 995682250, 'Patient-doctor communication', 'Patient-doctor communication is a complex interpersonal interaction that requires an understanding of each party׳s emotional state. We identified important but overlooked communication lapses such as non-verbal paralinguistic elements that should be incorporated into communications curriculum, with an emphasis on dialectical learning.', 0, '2019-08-12 23:00:00', '2019-05-23 11:08:48'),
-(3, 100100, 995682250, 'Indigestion', 'Did you know that one of the top reasons children complain about chest pain is because they actually have heartburn? I think a lot of people believe that adults are the only ones who get it, but I have been seeing more and more children complain about heartburn, and there are some common reasons why. Heartburn often creates an uncomfortable burning feeling behind the breastbone. It has nothing to do with your heart, but everything to do with your stomach and esophagus.', 0, '2019-03-17 23:00:00', NULL);
+INSERT INTO `tbl_patient_physician_messages` (`Message_ID`, `Medical_Record_No`, `Physician_ID`, `Message_Body`, `Status`, `TimeStamp`) VALUES
+(1, 100100, 995682250, 'Hi Doc, \r\nI\'ve been feeling some tummy ache since I woke up this morning. Is it possible to schedule an immediate checkup, cause I don\'t feel so good. Thanks', 0, '2019-05-20 15:04:45'),
+(2, 100100, 995682250, 'Patient-doctor communication is a complex interpersonal interaction that requires an understanding of each party׳s emotional state. We identified important but overlooked communication lapses such as non-verbal paralinguistic elements that should be incorporated into communications curriculum, with an emphasis on dialectical learning.', 1, '2019-03-12 23:00:00'),
+(3, 100100, 995682250, 'Did you know that one of the top reasons children complain about chest pain is because they actually have heartburn? I think a lot of people believe that adults are the only ones who get it, but I have been seeing more and more children complain about heartburn, and there are some common reasons why. Heartburn often creates an uncomfortable burning feeling behind the breastbone. It has nothing to do with your heart, but everything to do with your stomach and esophagus.', 1, '2019-03-17 23:00:00'),
+(4, 100100, 995682250, 'Hi Andrew, hope you\'re feeling much better? Would you like to schedule a checkup?', 1, '2019-06-05 01:20:25'),
+(5, 100100, 995682250, 'Good day Doc, Yes, I\'m feeling better now. I don\'t mind coming in for a checkup. Thanks.', 0, '2019-06-05 01:22:57');
 
 -- --------------------------------------------------------
 
@@ -672,7 +672,7 @@ CREATE TABLE IF NOT EXISTS `tbl_physician_appointment` (
   PRIMARY KEY (`Appointment_ID`),
   KEY `tbl_physician_appointment_id_index` (`Medical_Record_No`),
   KEY `tbl_physician_appointment_physician_id_index` (`Physician_ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tbl_physician_appointment`
@@ -684,7 +684,8 @@ INSERT INTO `tbl_physician_appointment` (`Appointment_ID`, `Medical_Record_No`, 
 (3, 329220, 995682250, '2019-04-02', '09:15:00', '', '2019-04-30 23:00:00'),
 (4, 100100, 995682250, '2019-05-10', '16:30:00', '', '2019-05-09 23:00:00'),
 (5, 100100, 995682250, '2019-06-04', '22:00:00', 'Need to schedule a Glucose test with you Andrew David.', '2019-06-04 19:39:44'),
-(6, 100100, 995682250, '2019-06-30', '08:30:00', 'Need to schedule an Insulin test with you Andrew', '2019-06-04 20:06:40');
+(6, 100100, 995682250, '2019-06-30', '08:30:00', 'Need to schedule an Insulin test with you Andrew', '2019-06-04 20:06:40'),
+(7, 100100, 995682250, '2019-06-13', '14:30:00', 'General checkup is reuired. Thanks', '2019-06-04 22:14:44');
 
 -- --------------------------------------------------------
 

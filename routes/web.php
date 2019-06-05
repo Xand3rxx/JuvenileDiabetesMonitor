@@ -54,3 +54,4 @@ Route::post('/register-new-physician', 'PhysicianController@store')->name('newPh
 
 */
 Route::post('/schedule-physician-appointment', 'PhysicianController@physicianScheduleAppointment')->name('PhysicianAppointment');
+Route::post('/send-patient-messaage', 'PhysicianController@messagePatient')->name('messagePatient');

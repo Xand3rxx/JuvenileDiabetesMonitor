@@ -80,7 +80,7 @@
                 <p class="text-dark font-weight-bold"> 8</p>
                 <p class="text-white bg-dark pl-1">EMR Generated HBA1C</p>
                 <p class="text-dark font-weight-bold">9</p>
-                <p class="text-warning">There is a significant difference between HBA1C and the EMR estimated HBA1C</p>
+                <p class="text-danger">There is a significant difference between HBA1C and the EMR estimated HBA1C</p>
               
                      
             </div>  
@@ -125,7 +125,7 @@
             <div class="card-body riskValue">
               <h3 class="text-danger font-weight-bold text-center">Risk Value Alert</h3>
               <hr>
-              <h5 class="card-description">{{ $item->First_Name}} {{ $item->Middle_Name}} {{ $item->Last_Name}} risk value is 
+              <h5 class="card-description">{{ $item->First_Name}} {{ $item->Middle_Name}} {{ $item->Last_Name}}'s risk value is 
                   @if ($riskValue < 130)
                       1
                   @elseif($riskValue > 130 && $riskValue < 160)

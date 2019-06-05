@@ -8,9 +8,10 @@ $(document).ready(function(){
   $(document).on('click', '.show-modal-example', function(){
       // $(this).closest('div.item-list').find('.pulse-show');
       // let msgTitle = $(this).closest('p').find('.msgTitle').text();
-      let msgTitle = $(this).closest('p').find('.msgTitle').text();
+      // let msgTitle = $(this).parents().find('.msgTitle').data('title');
+      let msgTitle = $(this).closest('div.ticket-card').find('.msgTitle').data('title');
+      $('#Message_Title').val('Re: '+ msgTitle);
 
-      console.log(msgTitle);
       showClickHandler();
   });
 
