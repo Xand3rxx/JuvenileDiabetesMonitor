@@ -30,7 +30,7 @@
             
             <h2 class="text-center mb-4">Register Physician</h2>
             <div class="auto-form-wrapper">
-            <form action="{{ route('newPyhsician') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('newPhysician') }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     @include('partials._messages')
     {{-- <div class="text-center"> --}}

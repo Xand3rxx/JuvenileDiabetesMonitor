@@ -61,7 +61,7 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/patient') }}">
           <i class="menu-icon mdi mdi-television"></i>
-          <span class="menu-title">Dashboard</span>
+          <span class="menu-title">Home</span>
         </a>
       </li>
       <li class="nav-item">

@@ -15,6 +15,6 @@ class PatientInformation extends Model
      */
     
     protected $fillable = [
-        	'Medical_Record_No', 'First_Name', 'Middle_Name', 'Last_Name', 'Date_of_Birth', 'Guardian1_Name','Guardian2_Name', 'Guardian1_mobile_No', 'Guardian2_mobile_No', 'Guardian1_Email', 'Guardian2_Email', 'Avatar'
+        'Medical_Record_No', 'Physician_ID', 'id', 'First_Name', 'Middle_Name', 'Last_Name', 'Date_of_Birth', 'Gender', 'Guardian1_Name','Guardian1_Email', 'Guardian1_mobile_No', 'Avatar'
     ];
 }

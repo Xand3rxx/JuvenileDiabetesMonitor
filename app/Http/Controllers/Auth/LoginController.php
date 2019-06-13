@@ -35,7 +35,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/checklogin';
+    protected $redirectTo = '/validate-login';
 
     /**
      * Create a new controller instance.
@@ -115,7 +115,7 @@ class LoginController extends Controller
         //     return redirect()->route('patientHome');
         // }
 
-        if(Auth::check()  == true){
+        if(Auth::check() == true){
             if(Auth::user()->user_type === 'Physician'){
                 return redirect()->route('physicianHome');
             }

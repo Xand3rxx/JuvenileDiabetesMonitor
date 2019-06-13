@@ -131,6 +131,39 @@ class PhysicianController extends Controller
         return back()->withInput()->with('error', 'Make sure your bio data is correct');
     }
 
+    public function updateProfile(Request $request){
+        $avatar = PhysicianInformation::select('Avatar')->where('id', Auth::user()->id)->get();
+        //Check if image avatar was uploaded
+        if($request->hasFile('Avatar')){
+            $image = $request->file('Avatar');
+            $avatar = rand() .'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('uploads'), $avatar);
+        } else{
+            foreach($avatar as $avi){
+                $avatar = $avi->Avatar;
+            }
+        }
+
+        $update_physician_bio = PhysicianInformation::where('id', Auth::user()->id)->update([
+            'Physician_ID'          => $request->get('Physician_ID'),
+            'id'                    => $request->get('id'),
+            'First_Name'            => $request->get('First_Name'),
+            'Middle_Name'           => $request->get('Middle_Name'),
+            'Last_Name'             => $request->get('Last_Name'),               
+            'Mobile_No'             => $request->get('Mobile_No'),
+            'Gender'                => $request->get('Gender'),
+            'Avatar'                => $avatar
+        ]);
+
+        if($update_physician_bio){
+            return back()->with('success', 'Dr. '.$request->get('First_Name').' '.  $request->get('Last_Name').' profile has been updated');
+        }else{
+            return back()->withInput()->with('error', 'Make sure your bio data is correct');
+        }
+        //  return response()->json($avatar);
+
+    }
+
     public function allPatients(){
         /*
             Controller method to return all information for all registered Patients
@@ -193,7 +226,9 @@ class PhysicianController extends Controller
     }
 
     public function settings(){
-        return view('physician.settings')->with('i');
+
+        $collection = PhysicianInformation::where('id', Auth::user()->id)->get();
+        return view('physician.settings', compact('collection'));
     }
     /**
      * Display the specified resource.
